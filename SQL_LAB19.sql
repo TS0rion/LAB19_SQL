@@ -190,7 +190,7 @@ select c.id , c.full_name from customer c
 join invoice i on c.id = i.customer_id
 where i.invoice_date = "2007-01-01";
 
--- 9,  đề kêu vào ngày 28/01/2008 ko có kết quả ,nên e sửa thành 28/10 để có kết quả hiển thị ra
+-- 9,  đề kêu vào ngày 28/01/2008 ko có kết quả ,nên e sửa thành 28/10 để có kết quả hiển thị ra 
 select i.id, i.invoice_total , i.invoice_date from invoice i 
 join employee e on i.employee_id = e.id
 where e.full_name = "Nguyen Van B" and i.invoice_date = "2006-10-28";
@@ -249,27 +249,27 @@ select count(*) as total_products
 from product
 where origin in ("Trung Quoc","Thai Lan");
 
--- 18 Tính số lượng sản phẩm mỗi quốc gia có trong cơ sở dữ liệu
+-- 18 
 select origin, count(*) as total_products
 from product
 group by origin;
 
 -- 19 
-SELECT origin,
-       MAX(price) AS max_price,
-       MIN(price) AS min_price,
-       AVG(price) AS avg_price
-FROM product
-GROUP BY origin;
+select origin,
+       MAX(price) as max_price,
+       MIN(price) as min_price,
+       AVG(price) as avg_price
+from product
+group by origin;
 
 -- 20 
-SELECT i.invoice_date,
-       SUM(p.price * d.amount) AS daily_profit
-FROM invoice i
-JOIN invoice_detail d ON i.id = d.invoice_id
-JOIN product p ON d.product_id = p.id
-GROUP BY i.invoice_date
-ORDER BY i.invoice_date;
+select i.invoice_date,
+       sum(p.price * d.amount) as daily_profit
+from invoice i
+join invoice_detail d on i.id = d.invoice_id
+join product p on d.product_id = p.id
+group by i.invoice_date
+group by i.invoice_date;
 
 
 
