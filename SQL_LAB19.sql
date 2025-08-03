@@ -269,7 +269,7 @@ from invoice i
 join invoice_detail d on i.id = d.invoice_id
 join product p on d.product_id = p.id
 group by i.invoice_date
-group by i.invoice_date;
+order by i.invoice_date;
 
 
 
